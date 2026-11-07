@@ -1,0 +1,13 @@
+const RUTA_REMOTA = "https://dummyjson.com/products?limit=12";
+
+export const solicitarProductos = async () => {
+  const replica = await fetch(RUTA_REMOTA);
+
+  if (!replica.ok) {
+    throw new Error("No se pudieron cargar los productos");
+  }
+
+  const cuerpo = await replica.json();
+
+  return cuerpo.products;
+};
